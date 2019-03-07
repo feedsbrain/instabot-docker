@@ -102,3 +102,22 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# IDEs
+.idea/
+*.iml
+
+.DS_Store
+
+# Account
+db
+session
+
+*.ini
+*.db
+*.session
+
+DS/
+nohup.out
+
+.vscode
