@@ -85,7 +85,7 @@ ENV IG_USER=username \
 # Unfollow Condition: Unfollow accounts which skewed follow/follower ratio (probably fake)	True
     IG_UNFOLLOW_PROBABLY_FAKE=True \
 # Unfollow Condition: Unfollow (celebrity) accounts with too many followers and not enough following
-    IG_UNFOLLOW_SELEBRAM=False
+    IG_UNFOLLOW_SELEBGRAM=False
 
 # Define volume for database
 VOLUME ["/app/db", "/app/session"]

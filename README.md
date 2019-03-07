@@ -25,9 +25,9 @@ Instabot is a toolkit written in Python for building Instagram bots using the un
 | IG_TIME_UNTIL_UNLIKE    | int | How long to wait after liking media before unliking them. | 3 * 24 * 60 * 60 (3 days) |
 | IG_COMMENT_PER_DAY      | int | Comments to post per day                             | 0    |
 | IG_COMMENT_SUBJECT      | [[str]] | List of word lists for comment subject generation        | ['this','the','your'] |
-| IG_COMMENT_PHOTO        | [[str]] | List of word lists for comment photo generation          | ['photo','picture','pic','shot','snapshot','capture'] |
+| IG_COMMENT_PHOTO        | [[str]] | List of word lists for comment photo generation          | ['photo','picture','pic','shot'] |
 | IG_COMMENT_ADJ          | [[str]] | List of word lists for comment adj generation            | ['is','looks','feels'] |
-| IG_COMMENT_COMPLEMENT   | [[str]] | List of word lists for comment complement generation     | ['great','super','good','wow','cool','great','magnificent','magical','stylish','beautiful','lovely','glorious','excellent','amazing'] |
+| IG_COMMENT_COMPLEMENT   | [[str]] | List of word lists for comment complement generation     | ['great','super','good'] |
 | IG_COMMENT_TERMINATOR   | [[str]] | List of word lists for comment terminator generation     | ['.','..','...','!','!!','!!!'] |
 | IG_TAGS                 | [str] | Tags to use for finding posts by hasthag or location(l:locationid from e.g. https://www.instagram.com/explore/locations/212999109/los-angeles-california/) | ['cat', 'car', 'dog', 'l:212999109'] |
 | IG_TAGS_BLACKLIST       | [str] | Tags to ignore when liking posts                   | [] |

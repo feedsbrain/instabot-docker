@@ -42,7 +42,7 @@ bot = InstaBot(
     unfollow_not_following=os.environ['IG_UNFOLLOW_NOT_FOLLOWING'].lower() == 'true',
     unfollow_inactive=os.environ['IG_UNFOLLOW_INACTIVE'].lower() == 'true',
     unfollow_probably_fake=os.environ['IG_UNFOLLOW_PROBABLY_FAKE'].lower() == 'true',
-    unfollow_selebgram=os.environ['IG_UNFOLLOW_SELEBRAM'].lower() == 'true',
+    unfollow_selebgram=os.environ['IG_UNFOLLOW_SELEBGRAM'].lower() == 'true',
     database_name = './db/' + os.environ['IG_USER'] + '.db',
     session_file='./session/' + os.environ['IG_USER'] + '.session'
 )
