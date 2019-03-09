@@ -70,7 +70,7 @@ Please check the list of supported parameters down below.
 | IG_UNFOLLOW_NOT_FOLLOWING |                                                                  Unfollow Condition:<br/>Unfollow those who<br/>do not follow you back                                                                   |         True          |
 |   IG_UNFOLLOW_INACTIVE    |                                                           Unfollow Condition:<br/>Unfollow those who have not<br/>posted in a while (inactive)                                                           |         True          |
 | IG_UNFOLLOW_PROBABLY_FAKE |                                                     Unfollow Condition:<br/>Unfollow accounts which skewed<br/>follow/follower ratio (probably fake)                                                     |         True          |
-|   IG_UNFOLLOW_SELEBRAM    |                                                Unfollow Condition:<br/>Unfollow (celebrity) accounts with too many<br/>followers and not enough following                                                |         False         |
+|   IG_UNFOLLOW_SELEBGRAM   |                                                Unfollow Condition:<br/>Unfollow (celebrity) accounts with too many<br/>followers and not enough following                                                |         False         |
 
 # Credits
 
