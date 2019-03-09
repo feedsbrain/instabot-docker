@@ -2,6 +2,17 @@
 
 Instabot is a toolkit written in Python for building Instagram bots using the undocumented private API. Instabot Docker is the docker image that wrap original instabot script and expose required parameters to environment variables.
 
+# How to Build
+
+Using Docker CLI: 
+```
+docker build -t [image-name:tag-name] .
+```
+Example: 
+```
+docker build -t instabot:latest .
+```
+
 # How to Use
 
 You need to be faimiar with Docker CLI. For beginners, I recommended to use [Kitematic](https://kitematic.com/). Minimum parameter to run this image is:
@@ -54,3 +65,7 @@ Please check the list of supported parameters down below.
 |   IG_UNFOLLOW_INACTIVE    |                                                           Unfollow Condition:<br/>Unfollow those who have not<br/>posted in a while (inactive)                                                           |         True          |
 | IG_UNFOLLOW_PROBABLY_FAKE |                                                     Unfollow Condition:<br/>Unfollow accounts which skewed<br/>follow/follower ratio (probably fake)                                                     |         True          |
 |   IG_UNFOLLOW_SELEBRAM    |                                                Unfollow Condition:<br/>Unfollow (celebrity) accounts with too many<br/>followers and not enough following                                                |         False         |
+
+# Credits
+
+All credits goes to the [instabot.py](https://github.com/instabot-py/instabot.py) team as my involvement is just packaging their work to docker image as I personally use to help me to do my job maintaining multiple accounts.
