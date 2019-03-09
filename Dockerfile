@@ -6,7 +6,9 @@ WORKDIR /app
 
 # Checkout latest instabot.py source code
 RUN apt-get update && apt-get install -y git
-RUN git clone --depth=1 https://github.com/instabot-py/instabot.py.git build
+RUN git clone https://github.com/instabot-py/instabot.py.git build
+# Checkout instabot version 1.2.3
+RUN cd build && git checkout 95ebc6e20fbf930dfbffd0b28d557a64d0042d54
 RUN rm -rf build/.git
 
 # Build runtime image
