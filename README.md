@@ -1,8 +1,16 @@
-# InstaBot
+# InstaBot Docker
 
-Instabot is a toolkit written in Python for building Instagram bots using the undocumented private API.
+Instabot is a toolkit written in Python for building Instagram bots using the undocumented private API. Instabot Docker is the docker image that wrap original instabot script and expose required parameters to environment variables.
 
-## Parameters
+# How to Use
+
+You need to be faimiar with Docker CLI. For beginners, I recommended to use [Kitematic](https://kitematic.com/). Minimum parameter to run this image is:
+
+`docker run -e IG_USER=username -e IG_PASSWORD=password -e IG_TAGS=portrait,landscape --name username feedsbrain/instabot`
+
+Please check the list of supported parameters down below.
+
+# Parameters
 |         Parameter         |                                                                                               Description                                                                                                |     Default value     |
 | :-----------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------: |
 |          IG_USER          |                                                                                         Your instagram username                                                                                          |                       |
@@ -15,7 +23,7 @@ Instabot is a toolkit written in Python for building Instagram bots using the un
 |     IG_MEDIA_MAX_LIKE     |                                                                   Maximum number of likes on photos to like<br/>(set to 0 to disable)                                                                    |           0           |
 |     IG_MEDIA_MIN_LIKE     |                                                                   Minimum number of likes on photos to like<br/>(set to 0 to disable)                                                                    |           0           |
 |     IG_FOLLOW_PER_DAY     |                                                                                         Users to follow per day                                                                                          |           0           |
-|      IG_FOLLOW_TIME       |                                                                                    Seconds to wait before unfollowing                                                                                    |      5 * 60 * 60      |
+|      IG_FOLLOW_TIME       |                                                                                    Seconds to wait before unfollowing                                                                                    |    18000 (5 hours)    |
 |    IG_USER_MIN_FOLLOW     |                                                      Check user before following them<br/>if they have X minimum of followers.<br/>Set 0 to disable                                                      |           0           |
 |    IG_USER_MAX_FOLLOW     |                                                      Check user before following them<br/>if they have X maximum of followers.<br/>Set 0 to disable                                                      |           0           |
 |  IG_FOLLOW_TIME_ENABLED   |                                                                      Whether to wait seconds set in follow_time before unfollowing                                                                       |         True          |

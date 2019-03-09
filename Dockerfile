@@ -6,9 +6,9 @@ WORKDIR /app
 
 # Checkout latest instabot.py source code
 RUN apt-get update && apt-get install -y git
-RUN git clone --depth=1 https://github.com/instabot-py/instabot.py.git temp
-RUN rm -rf temp/.git && cp -r temp/* .
-RUN rm -rf temp
+RUN git clone --depth=1 https://github.com/instabot-py/instabot.py.git build
+RUN rm -rf build/.git && cp -r build/* .
+RUN rm -rf build
 
 # This is the magic
 COPY instabot.py /app
