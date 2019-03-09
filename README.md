@@ -6,7 +6,12 @@ Instabot is a toolkit written in Python for building Instagram bots using the un
 
 You need to be faimiar with Docker CLI. For beginners, I recommended to use [Kitematic](https://kitematic.com/). Minimum parameter to run this image is:
 
-`docker run -e IG_USER=username -e IG_PASSWORD=password -e IG_TAGS=portrait,landscape --name username feedsbrain/instabot`
+```
+docker run -e IG_USER=username \
+           -e IG_PASSWORD=password \
+           -e IG_TAGS=portrait,landscape \
+           --name username feedsbrain/instabot
+```
 
 Please check the list of supported parameters down below.
 
