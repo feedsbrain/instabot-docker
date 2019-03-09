@@ -4,6 +4,12 @@ Instabot is a toolkit written in Python for building Instagram bots using the un
 
 # How to Build
 
+Clone this repository using command:
+```
+git clone https://github.com/feedsbrain/instabot-docker
+```
+then follow the instruction below. I'm assuming that you already familiar with `docker` and `docker-cli`.
+
 Using Docker CLI: 
 ```
 docker build -t [image-name:tag-name] .
