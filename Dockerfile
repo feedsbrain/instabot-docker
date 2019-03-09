@@ -1,11 +1,10 @@
-# Use an official Python runtime as a parent image
-FROM python:3.7-slim AS build-env
+# Use git container to checkout code
+FROM alpine/git AS build-env
 
 # Set the working directory to /app
 WORKDIR /app
 
 # Checkout latest instabot.py source code
-RUN apt-get update && apt-get install -y git
 RUN git clone https://github.com/instabot-py/instabot.py.git build
 # Checkout instabot version 1.2.3
 RUN cd build && git checkout 95ebc6e20fbf930dfbffd0b28d557a64d0042d54
