@@ -7,7 +7,7 @@ WORKDIR /app
 # Checkout latest instabot.py source code
 RUN git clone https://github.com/instabot-py/instabot.py.git build
 # Checkout instabot version 1.2.5
-RUN cd build && git checkout f56aad4a85dd40dac53e370ec81b9a85a8665527
+RUN cd build && git checkout 98c2c9b3b89aab4ab4527310f9cf4e3c086df30e
 RUN rm -rf build/.git
 
 # Build runtime image
@@ -20,9 +20,13 @@ COPY --from=build-env /app/build .
 # This is the magic
 COPY instabot.py /app
 RUN rm example.py
+RUN rm /app/instabot.config.yml
+COPY instabot.config.yml /app
 
-# Install any needed packages specified in requirements.txt
+# Install any needed packages
 RUN pip3 install --trusted-host pypi.python.org -r ./requirements/base.txt
+RUN pip3 install --trusted-host pypi.python.org -r ./requirements/misc-deps.txt
+RUN pip3 install --trusted-host pypi.python.org python-telegram-handler sqlalchemy
 
 # Define environment variable
 # Your instagram username
@@ -92,7 +96,11 @@ ENV IG_USER=username \
 # Unfollow Condition: Unfollow accounts which skewed follow/follower ratio (probably fake)	True
     IG_UNFOLLOW_PROBABLY_FAKE=True \
 # Unfollow Condition: Unfollow (celebrity) accounts with too many followers and not enough following
-    IG_UNFOLLOW_SELEBGRAM=False
+    IG_UNFOLLOW_SELEBGRAM=False \
+# Use to block usernames containing a (partial) string
+    IG_UNWANTED_USERNAME_LIST=second,stuff,art,project,love,life,food,blog,free,keren,photo,graphy,indo,travel,art,shop,store,sex,toko,jual,online,murah,jam,kaos,case,baju,fashion,corp,tas,butik,grosir,karpet,sosis,salon,skin,care,cloth,tech,rental,kamera,beauty,express,kredit,collection,impor,preloved,follow,follower,gain,.id,_id,bags \
+# Use to whitelist username from unfollow
+    IG_UNFOLLOW_WHITELIST=instagram,facebook,twitter
 
 # Define volume for database
 VOLUME ["/app/db", "/app/session"]
