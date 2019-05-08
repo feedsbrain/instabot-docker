@@ -1,0 +1,3 @@
+debug: 0
+logging.loggers.InstaBot.handlers:
+  - console

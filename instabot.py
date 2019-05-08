@@ -44,7 +44,9 @@ bot = InstaBot(
     unfollow_probably_fake=os.environ['IG_UNFOLLOW_PROBABLY_FAKE'].lower() == 'true',
     unfollow_selebgram=os.environ['IG_UNFOLLOW_SELEBGRAM'].lower() == 'true',
     database_name = './db/' + os.environ['IG_USER'] + '.db',
-    session_file='./session/' + os.environ['IG_USER'] + '.session'
+    session_file='./session/' + os.environ['IG_USER'] + '.session',
+    unwanted_username_list=os.environ['IG_UNWANTED_USERNAME_LIST'].split(','),
+    unfollow_whitelist=os.environ['IG_UNFOLLOW_WHITELIST'].split(',')
 )
 
 # check default username
