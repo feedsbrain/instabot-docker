@@ -48,20 +48,20 @@ The latest changes done by [instabot.py](https://github.com/instabot-py/instabot
 
 ```
 ---
-debug: 1
+debug: 0
 logging.loggers.InstaBot.handlers:
   - console
 start_at_h: 0
 start_at_m: 0
 end_at_h: 23
 end_at_m: 59
-like_per_day: 50
-follow_per_day: 50
+like_per_day: 200
+follow_per_day: 5
 follow_time: 604800
-user_min_follow: 0
+user_min_follow: 200
 user_max_follow: 0
 follow_time_enabled: true
-unfollow_per_day: 0
+unfollow_per_day: 5
 unfollow_recent_feed: true
 unlike_per_day: 0
 time_till_unlike: 604800
@@ -109,6 +109,22 @@ tag_list:
   - sunrise
   - sunset
   - milkyway
+  - drone
+  - food
+  - model
+  - traveldestination
+  - wunderlust
+  - nature
+  - model
+  - cookie
+  - cake
+  - street
+  - foodism
+  - candid
+  - healthyfood
+  - healt
+  - portraiture
+  - streetfood
 tag_blacklist: 
   - nude
   - sexy
