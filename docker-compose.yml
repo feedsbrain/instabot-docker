@@ -1,0 +1,23 @@
+# docker-compose.yml example
+version: '3'
+services:
+  instabot: # recomended to use your username
+    build: .
+    stdin_open: true
+    tty: true
+    restart: always
+    environment:
+      - IG_USER=username
+      - IG_PASSWORD=password
+    volumes:
+      - data:/app/db
+      - session:/app/session
+      - config:/app/config # bind to your host folder
+    networks:
+      - instagram
+networks:
+  instagram:
+volumes:
+  data:
+  session:
+  config:

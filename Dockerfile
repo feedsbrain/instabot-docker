@@ -18,10 +18,15 @@ WORKDIR /app
 COPY --from=build-env /app/build .
 
 # This is the magic
-COPY instabot.py /app
+COPY start-instabot.py /app
+# Replace environment variable prefix
+RUN sed -i 's/ConfigManager(prefix="INSTABOT")/ConfigManager(prefix="IG")/g' /app/instabot_py/config.py
+# Cleanup default config and example
 RUN rm example.py
 RUN rm /app/instabot.config.yml
-COPY instabot.config.yml /app
+# Copy our own config here
+COPY ./config/instabot.config.yml /app/config/instabot.config.yml
+RUN ln -sf /app/config/instabot.config.yml /app/instabot.config.yml
 
 # Install any needed packages
 RUN pip3 install --trusted-host pypi.python.org -r ./requirements/base.txt
@@ -32,78 +37,10 @@ RUN pip3 install --trusted-host pypi.python.org python-telegram-handler sqlalche
 # Your instagram username
 ENV IG_USER=username \
 # Your instagram password
-    IG_PASSWORD=password \
-# Start program at the hour
-    IG_START_HOUR=0 \
-# Start program at the min
-    IG_START_MINUTE=0 \
-# End program at the hour
-    IG_END_HOUR=23 \
-# End program at the min
-    IG_END_MINUTE=59 \
-# Number of photos to like per day (over 1000 may cause throttling)
-    IG_LIKE_PER_DAY=50 \
-# Maximum number of likes on photos to like (set to 0 to disable)
-    IG_MEDIA_MAX_LIKE=0 \
-# Minimum number of likes on photos to like (set to 0 to disable)
-    IG_MEDIA_MIN_LIKE=0 \
-# Users to follow per day
-    IG_FOLLOW_PER_DAY=50 \
-# Seconds to wait before unfollowing
-    IG_FOLLOW_TIME=17800 \
-# Check user before following them if they have X minimum of followers. Set 0 to disable
-    IG_USER_MIN_FOLLOW=0 \
-# Check user before following them if they have X maximumof followers. Set 0 to disable  
-    IG_USER_MAX_FOLLOW=0 \
-# Whether to wait seconds set in follow_time before unfollowing
-    IG_FOLLOW_TIME_ENABLED=True \
-# Users to unfollow per day
-    IG_UNFOLLOW_PER_DAY=0 \
-# If enabled, will populate database with users from recent feed and unfollow if they meet the conditions. Disable if you only want the bot to unfollow people it has previously followed.
-    IG_UNFOLLOW_RECENT_FEED=True \
-# Number of media to unlike that the bot has previously liked. Set to 0 to disable.
-    IG_UNLIKE_PER_DAY=0 \
-# How long to wait after liking media before unliking them.
-    IG_TIME_UNTIL_UNLIKE=17800 \
-# Comments to post per day
-    IG_COMMENT_PER_DAY=0 \
-# List of word lists for comment generation
-    IG_COMMENT_SUBJECT=this,the,your \
-    IG_COMMENT_PHOTO=photo,picture,pic,shot,snapshot,capture \
-    IG_COMMENT_ADJ=is,looks,feels \
-    IG_COMMENT_COMPLEMENT=great,super,good,wow,cool,great,magnificent,magical,stylish,beautiful,lovely,glorious,excellent,amazing \
-    IG_COMMENT_TERMINATOR=.,..,...,!,!!,!!! \
-# Tags to use for finding posts by hasthag or location
-    IG_TAGS=landscape,cityscape,portraiture,travel,sunrise,sunset,milkyway \
-# Tags to ignore when liking posts
-    IG_TAGS_BLACKLIST=nude,sexy,lgbt,gay \
-# Users whose posts to ignore
-    IG_USER_BLACKLIST={} \
-# How many media of a given tag to like at once (out of 21)
-    IG_MAX_LIKE_FOR_TAG=10 \
-# Minimum seconds to break between unfollows
-    IG_UNFOLLOW_BREAK_MIN=15 \
-# Maximum seconds to break between unfollows
-    IG_UNFOLLOW_BREAK_MAX=30 \
-    IG_MODE=0 \
-    IG_LOG_MODE=0 \
-# Access instagram through a proxy. (host:port or user:password@host:port)
-    IG_PROXY= \
-# Unfollow Condition: Unfollow those who do not follow you back
-    IG_UNFOLLOW_NOT_FOLLOWING=True \
-# Unfollow Condition: Unfollow those who have not posted in a while (inactive)
-    IG_UNFOLLOW_INACTIVE=True \
-# Unfollow Condition: Unfollow accounts which skewed follow/follower ratio (probably fake)	True
-    IG_UNFOLLOW_PROBABLY_FAKE=True \
-# Unfollow Condition: Unfollow (celebrity) accounts with too many followers and not enough following
-    IG_UNFOLLOW_SELEBGRAM=False \
-# Use to block usernames containing a (partial) string
-    IG_UNWANTED_USERNAME_LIST=second,stuff,art,project,love,life,food,blog,free,keren,photo,graphy,indo,travel,art,shop,store,sex,toko,jual,online,murah,jam,kaos,case,baju,fashion,corp,tas,butik,grosir,karpet,sosis,salon,skin,care,cloth,tech,rental,kamera,beauty,express,kredit,collection,impor,preloved,follow,follower,gain,.id,_id,bags \
-# Use to whitelist username from unfollow
-    IG_UNFOLLOW_WHITELIST=instagram,facebook,twitter
+    IG_PASSWORD=password
 
-# Define volume for database
-VOLUME ["/app/db", "/app/session"]
+# Define volume for database and config
+VOLUME ["/app/db", "/app/session", "/app/config"]
 
 # Run app.py when the container launches
-CMD ["python", "instabot.py"]
+CMD ["python", "start-instabot.py"]

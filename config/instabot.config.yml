@@ -1,0 +1,131 @@
+---
+debug: 1
+logging.loggers.InstaBot.handlers:
+  - console
+start_at_h: 0
+start_at_m: 0
+end_at_h: 23
+end_at_m: 59
+like_per_day: 50
+follow_per_day: 50
+follow_time: 604800
+user_min_follow: 0
+user_max_follow: 0
+follow_time_enabled: true
+unfollow_per_day: 0
+unfollow_recent_feed: true
+unlike_per_day: 0
+time_till_unlike: 604800
+comments_per_day: 0
+comment_list: 
+  - 
+    - this
+    - the
+    - your
+  - 
+    - photo
+    - picture
+    - pic
+    - shot
+    - snapshot
+    - capture
+  - 
+    - is
+    - looks
+    - "is really"
+  - 
+    - great
+    - super
+    - good
+    - wow
+    - cool
+    - great
+    - magnificent
+    - magical
+    - stylish
+    - beautiful
+    - lovely
+    - excellent
+    - amazing
+  - 
+    - "."
+    - "..."
+    - "!"
+    - "!!!"
+tag_list: 
+  - landscape
+  - cityscape
+  - portraiture
+  - travel
+  - sunrise
+  - sunset
+  - milkyway
+tag_blacklist: 
+  - nude
+  - sexy
+  - lgbt
+  - gay
+max_like_for_one_tag: 10
+unfollow_break_min: 15
+unfollow_break_max: 30
+unfollow_not_following: true
+unfollow_inactive: true
+unfollow_selebgram: false
+unfollow_probably_fake: true
+unwanted_username_list: 
+  - second
+  - stuff
+  - art
+  - project
+  - love
+  - life
+  - food
+  - blog
+  - free
+  - keren
+  - photo
+  - graphy
+  - indo
+  - travel
+  - art
+  - shop
+  - store
+  - sex
+  - toko
+  - jual
+  - online
+  - murah
+  - jam
+  - kaos
+  - case
+  - baju
+  - fashion
+  - corp
+  - tas
+  - butik
+  - grosir
+  - karpet
+  - sosis
+  - salon
+  - skin
+  - care
+  - cloth
+  - tech
+  - rental
+  - kamera
+  - beauty
+  - express
+  - kredit
+  - collection
+  - impor
+  - preloved
+  - follow
+  - follower
+  - gain
+  - .id
+  - _id
+  - bags
+unfollow_whitelist: 
+  - instagram
+  - facebook
+  - twitter

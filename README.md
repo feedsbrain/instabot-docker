@@ -5,16 +5,21 @@ Instabot is a toolkit written in Python for building Instagram bots using the un
 # How to Build
 
 Clone this repository using command:
+
 ```
 git clone https://github.com/feedsbrain/instabot-docker
 ```
-then follow the instruction below. I'm assuming that you already familiar with `docker` and `docker-cli`.
+
+then follow the instruction below. I'm assuming that you already familiar with `docker` and `docker-cli` .
 
 Using Docker CLI: 
+
 ```
-docker build -t [image-name:tag-name] .
+docker build -t [image-name:tag-name].
 ```
+
 Example: 
+
 ```
 docker build -t instabot:latest .
 ```
@@ -24,53 +29,187 @@ docker build -t instabot:latest .
 You need to be faimiar with Docker CLI. For beginners, I recommended to use [Kitematic](https://kitematic.com/). Minimum parameter to run this image is:
 
 ```
-docker run -e IG_USER=username \
-           -e IG_PASSWORD=password \
-           -e IG_TAGS=portrait,landscape \
-           --name username feedsbrain/instabot
+docker run -e IG_USER=username -e IG_PASSWORD=password --name username feedsbrain/instabot
 ```
 
 Please check the list of supported parameters down below.
 
 # Parameters
-|         Parameter         |                                                                                               Description                                                                                                |     Default value     |
-| :-----------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------: |
-|          IG_USER          |                                                                                         Your instagram username                                                                                          |                       |
-|        IG_PASSWORD        |                                                                                         Your instagram password                                                                                          |                       |
-|       IG_START_HOUR       |                                                                                        Start program at the hour                                                                                         |           0           |
-|      IG_START_MINUTE      |                                                                                         Start program at the min                                                                                         |           0           |
-|        IG_END_HOUR        |                                                                                         End program at the hour                                                                                          |          23           |
-|       IG_END_MINUTE       |                                                                                          End program at the min                                                                                          |          59           |
-|      IG_LIKE_PER_DAY      |                                                                  Number of photos to like per day<br/>(over 1000 may cause throttling)                                                                   |         1000          |
-|     IG_MEDIA_MAX_LIKE     |                                                                   Maximum number of likes on photos to like<br/>(set to 0 to disable)                                                                    |           0           |
-|     IG_MEDIA_MIN_LIKE     |                                                                   Minimum number of likes on photos to like<br/>(set to 0 to disable)                                                                    |           0           |
-|     IG_FOLLOW_PER_DAY     |                                                                                         Users to follow per day                                                                                          |           0           |
-|      IG_FOLLOW_TIME       |                                                                                    Seconds to wait before unfollowing                                                                                    |    18000 (5 hours)    |
-|    IG_USER_MIN_FOLLOW     |                                                      Check user before following them<br/>if they have X minimum of followers.<br/>Set 0 to disable                                                      |           0           |
-|    IG_USER_MAX_FOLLOW     |                                                      Check user before following them<br/>if they have X maximum of followers.<br/>Set 0 to disable                                                      |           0           |
-|  IG_FOLLOW_TIME_ENABLED   |                                                                      Whether to wait seconds set in follow_time before unfollowing                                                                       |         True          |
-|    IG_UNFOLLOW_PER_DAY    |                                                                                        Users to unfollow per day                                                                                         |           0           |
-|  IG_UNFOLLOW_RECENT_FEED  | If enabled, will populate database<br/>with users from recent feed and unfollow<br/>if they meet the conditions.<br/>Disable if you only want the bot<br/>to unfollow people it has previously followed. |         True          |
-|     IG_UNLIKE_PER_DAY     |                                                            Number of media to unlike that the bot has previously liked. Set to 0 to disable.                                                             |           0           |
-|   IG_TIME_UNTIL_UNLIKE    |                                                                        How long to wait after liking media before unliking them.                                                                         |    259200 (3 days)    |
-|    IG_COMMENT_PER_DAY     |                                                                                         Comments to post per day                                                                                         |           0           |
-|    IG_COMMENT_SUBJECT     |                                                                            List of word lists for comment subject generation                                                                             |    ['this','your']    |
-|     IG_COMMENT_PHOTO      |                                                                             List of word lists for comment photo generation                                                                              |  ['photo','picture']  |
-|      IG_COMMENT_ADJ       |                                                                              List of word lists for comment adj generation                                                                               |   ['looks','feels']   |
-|   IG_COMMENT_COMPLEMENT   |                                                                           List of word lists for comment complement generation                                                                           |   ['great','good']    |
-|   IG_COMMENT_TERMINATOR   |                                                                           List of word lists for comment terminator generation                                                                           |   ['!','!!','!!!']    |
-|          IG_TAGS          |                     Tags to use for finding posts by hasthag or location<br/>(l:locationid from e.g.<br/>https://instagram.com/explore/locations/212999109/los-angeles-california/)                      | ['cat','l:212999109'] |
-|     IG_TAGS_BLACKLIST     |                                                                                     Tags to ignore when liking posts                                                                                     |          []           |
-|     IG_USER_BLACKLIST     |                   Users whose posts to ignore.<br/>Example: `{"foo": "", "bar": ""}`<br/>type only the key and leave value empty<br/>-- it will be populated with userids on startup.                    |          {}           |
-|    IG_MAX_LIKE_FOR_TAG    |                                                                      How many media of a given tag<br/>to like at once (out of 21)                                                                       |           5           |
-|   IG_UNFOLLOW_BREAK_MIN   |                                                                                Minimum seconds to break between unfollows                                                                                |          15           |
-|   IG_UNFOLLOW_BREAK_MAX   |                                                                                Maximum seconds to break between unfollows                                                                                |          30           |
-|        IG_LOG_MODE        |                                                                       Logging target (0 log to console, 1 log to file, 2 no log.)                                                                        |           0           |
-|         IG_PROXY          |                                                               Access instagram through a proxy.<br/>(host:port or user:password@host:port)                                                               |                       |
-| IG_UNFOLLOW_NOT_FOLLOWING |                                                                  Unfollow Condition:<br/>Unfollow those who<br/>do not follow you back                                                                   |         True          |
-|   IG_UNFOLLOW_INACTIVE    |                                                           Unfollow Condition:<br/>Unfollow those who have not<br/>posted in a while (inactive)                                                           |         True          |
-| IG_UNFOLLOW_PROBABLY_FAKE |                                                     Unfollow Condition:<br/>Unfollow accounts which skewed<br/>follow/follower ratio (probably fake)                                                     |         True          |
-|   IG_UNFOLLOW_SELEBGRAM   |                                                Unfollow Condition:<br/>Unfollow (celebrity) accounts with too many<br/>followers and not enough following                                                |         False         |
+|  Parameter  |       Description       |
+|:-----------:|:-----------------------:|
+|   IG_USER   | Your instagram username |
+| IG_PASSWORD | Your instagram password |
+
+# Configuration
+
+The latest changes done by [instabot.py](https://github.com/instabot-py/instabot.py) team has allows us to put the bot configurations inside the `yaml` file. And without any specific reason, this repo has included default configuration inside the docker image with default values as you can see here:
+
+`instabot.config.yml`
+
+```
+---
+debug: 1
+logging.loggers.InstaBot.handlers:
+  - console
+start_at_h: 0
+start_at_m: 0
+end_at_h: 23
+end_at_m: 59
+like_per_day: 50
+follow_per_day: 50
+follow_time: 604800
+user_min_follow: 0
+user_max_follow: 0
+follow_time_enabled: true
+unfollow_per_day: 0
+unfollow_recent_feed: true
+unlike_per_day: 0
+time_till_unlike: 604800
+comments_per_day: 0
+comment_list: 
+  - 
+    - this
+    - the
+    - your
+  - 
+    - photo
+    - picture
+    - pic
+    - shot
+    - snapshot
+    - capture
+  - 
+    - is
+    - looks
+    - "is really"
+  - 
+    - great
+    - super
+    - good
+    - wow
+    - cool
+    - great
+    - magnificent
+    - magical
+    - stylish
+    - beautiful
+    - lovely
+    - excellent
+    - amazing
+  - 
+    - "."
+    - "..."
+    - "!"
+    - "!!!"
+tag_list: 
+  - landscape
+  - cityscape
+  - portraiture
+  - travel
+  - sunrise
+  - sunset
+  - milkyway
+tag_blacklist: 
+  - nude
+  - sexy
+  - lgbt
+  - gay
+max_like_for_one_tag: 10
+unfollow_break_min: 15
+unfollow_break_max: 30
+unfollow_not_following: true
+unfollow_inactive: true
+unfollow_selebgram: false
+unfollow_probably_fake: true
+unwanted_username_list: 
+  - second
+  - stuff
+  - art
+  - project
+  - love
+  - life
+  - food
+  - blog
+  - free
+  - keren
+  - photo
+  - graphy
+  - indo
+  - travel
+  - art
+  - shop
+  - store
+  - sex
+  - toko
+  - jual
+  - online
+  - murah
+  - jam
+  - kaos
+  - case
+  - baju
+  - fashion
+  - corp
+  - tas
+  - butik
+  - grosir
+  - karpet
+  - sosis
+  - salon
+  - skin
+  - care
+  - cloth
+  - tech
+  - rental
+  - kamera
+  - beauty
+  - express
+  - kredit
+  - collection
+  - impor
+  - preloved
+  - follow
+  - follower
+  - gain
+  - .id
+  - _id
+  - bags
+unfollow_whitelist: 
+  - instagram
+  - facebook
+  - twitter
+```
+
+If you need to use your own configuration file, please refer to the original [instabot.py](https://github.com/instabot-py/instabot.py) page for the complete documentation on how to create this configuration file. What we need to do next is to put the config inside a folder i.e. `config/instabot.config.yml` so that you can bind the `config` folder as volume to `/app/config`. 
+
+Please refer to this `docker-compose.yml` sample:
+
+`docker-compose.yml`
+```
+# docker-compose.yml example
+version: '3'
+services:
+  instabot: # recomended to use your username
+    build: .
+    stdin_open: true
+    tty: true
+    restart: always
+    environment:
+      - IG_USER=username
+      - IG_PASSWORD=password
+    volumes:
+      - data:/app/db
+      - session:/app/session
+      - /host/location/config:/app/config # bind to your host folder
+    networks:
+      - instagram
+networks:
+  instagram:
+volumes:
+  data:
+  session:
+  config:
+```
 
 # Credits
 
