@@ -18,7 +18,6 @@ print('Instabot config file: ' + os.environ['IG_CONFIG_FILE'])
 bot = InstaBot(
     login=username,
     password=os.environ['IG_PASSWORD'],
-    database_name = './db/' + username + '.db',
     session_file='./session/' + username + '.session'
 )
 
