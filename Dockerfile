@@ -23,6 +23,11 @@ COPY start-instabot.py /app
 RUN sed -i 's/ConfigManager(prefix="INSTABOT")/ConfigManager(prefix="IG")/g' /app/instabot_py/config.py
 # Replace default database location
 RUN sed -i 's/"connection_string": "sqlite:\/\/\/{{login}}.db"/"connection_string": "sqlite:\/\/\/db\/{{login}}.db"/g' /app/instabot_py/default_config.py
+# Default config adjustment
+RUN sed -i 's/"like_per_day": 1000/"like_per_day": 200/g' /app/instabot_py/default_config.py
+RUN sed -i 's/"like_per_day": 709/"like_per_day": 200/g' /app/instabot_py/__main__.py
+RUN sed -i 's/"unfollow_per_day": 247/"unfollow_per_day": 10/g' /app/instabot_py/__main__.py
+RUN sed -i 's/"comments_per_day": 31/"comments_per_day": 0/g' /app/instabot_py/__main__.py
 # Cleanup default config and example
 RUN rm example.py
 RUN rm /app/instabot.config.yml
