@@ -49,6 +49,16 @@ The latest changes done by [instabot.py](https://github.com/instabot-py/instabot
 ```
 ---
 debug: 0
+logging.version: 1
+logging.disable_existing_loggers: False
+logging.root.level: INFO
+logging.formatters.simple: 
+  format: '%(asctime)s - {{login}} - %(name)s - %(levelname)s - %(message)s'
+logging.handlers.console:
+  level: DEBUG
+  class: logging.StreamHandler
+  formatter: simple
+  stream: ext://sys.stdout
 logging.loggers.InstaBot.handlers:
   - console
 start_at_h: 0
