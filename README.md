@@ -65,15 +65,15 @@ start_at_h: 0
 start_at_m: 0
 end_at_h: 23
 end_at_m: 59
-like_per_day: 200
-follow_per_day: 5
+like_per_run: 200
+follow_per_run: 5
 follow_time: 604800
 user_min_follow: 200
 user_max_follow: 0
 follow_time_enabled: true
-unfollow_per_day: 5
+unfollow_per_run: 5
 unfollow_recent_feed: true
-unlike_per_day: 0
+unlike_per_run: 0
 time_till_unlike: 604800
 comments_per_day: 0
 comment_list: 
