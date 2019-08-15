@@ -6,7 +6,8 @@ WORKDIR /app
 
 # Checkout latest instabot.py source code
 RUN git clone https://github.com/yurilaaziz/instabot.py.git build
-# Checkout instabot version 1.2.6
+
+# Checkout instabot version 0.5.8
 RUN cd build && git pull && git checkout 7633395fc7e29109037ee8a4d2ef8655926deec6
 RUN rm -rf build/.git
 
@@ -21,6 +22,7 @@ COPY --from=build-env /app/build ./instabot.py
 RUN python -m pip install ./instabot.py
 COPY ./start-instabot.sh /app/start-instabot.sh
 RUN chmod a+x /app/start-instabot.sh
+
 # Copy our own config here
 COPY ./config/instabot.config.yml /app/config/instabot.config.yml
 RUN ln -sf /app/config/instabot.config.yml /app/instabot.config.yml
