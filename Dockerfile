@@ -5,10 +5,10 @@ FROM alpine/git AS build-env
 WORKDIR /app
 
 # Checkout latest instabot.py source code
-RUN git clone https://github.com/yurilaaziz/instabot.py.git build
+RUN git clone https://github.com/instabot-py/instabot.py.git build
 
-# Checkout instabot version 0.5.8
-RUN cd build && git pull && git checkout 7633395fc7e29109037ee8a4d2ef8655926deec6
+# Checkout instabot version 0.5.12
+RUN cd build && git pull && git checkout e1eae1171a21494fd80cc43c3d70d3ba3270c0a1
 RUN rm -rf build/.git
 
 # Build runtime image
