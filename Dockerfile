@@ -12,7 +12,7 @@ RUN cd build && git pull && git checkout e1eae1171a21494fd80cc43c3d70d3ba3270c0a
 RUN rm -rf build/.git
 
 # Build runtime image
-FROM python:3.7-slim
+FROM python:3.8.1-slim
 WORKDIR /app
 
 # Copy from build image
