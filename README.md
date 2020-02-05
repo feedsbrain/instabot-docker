@@ -61,6 +61,9 @@ logging.handlers.console:
   stream: ext://sys.stdout
 logging.loggers.InstaBot.handlers:
   - console
+database.type: "sql"
+database.path: '/app/db/{{login}}.db'
+database.connection_string: 'sqlite:///{{database.path}}'
 start_at_h: 0
 start_at_m: 0
 end_at_h: 23
