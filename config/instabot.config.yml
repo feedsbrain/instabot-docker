@@ -19,7 +19,10 @@ start_at_h: 0
 start_at_m: 0
 end_at_h: 23
 end_at_m: 59
-like_per_run: 200
+like_per_run: 50
+like_followers_per_run: 20
+media_max_like: 1000
+media_min_like: 10
 follow_per_run: 5
 follow_time: 604800
 user_min_follow: 200
