@@ -68,14 +68,15 @@ start_at_h: 0
 start_at_m: 0
 end_at_h: 23
 end_at_m: 59
-like_per_run: 200
+like_per_run: 50
+like_followers_per_run: 20
+media_max_like: 1000
+media_min_like: 10
 follow_per_run: 5
 follow_time: 604800
-user_min_follow: 200
-user_max_follow: 0
-follow_time_enabled: true
+user_min_follow: 500
+user_max_follow: 2000
 unfollow_per_run: 5
-unfollow_recent_feed: true
 unlike_per_run: 0
 time_till_unlike: 604800
 comments_per_day: 0
@@ -126,18 +127,17 @@ tag_list:
   - food
   - model
   - traveldestination
-  - wunderlust
   - nature
   - model
-  - cookie
-  - cake
   - street
-  - foodism
   - candid
-  - healthyfood
-  - healt
   - portraiture
   - streetfood
+keywords:
+  - photographer
+  - videographer
+  - filmmaker
+  - traveler
 tag_blacklist: 
   - nude
   - sexy
@@ -150,63 +150,7 @@ unfollow_not_following: true
 unfollow_inactive: true
 unfollow_selebgram: false
 unfollow_probably_fake: true
-unwanted_username_list: 
-  - second
-  - stuff
-  - art
-  - project
-  - love
-  - life
-  - food
-  - blog
-  - free
-  - keren
-  - photo
-  - graphy
-  - indo
-  - travel
-  - art
-  - shop
-  - store
-  - sex
-  - toko
-  - jual
-  - online
-  - murah
-  - jam
-  - kaos
-  - case
-  - baju
-  - fashion
-  - corp
-  - tas
-  - butik
-  - grosir
-  - karpet
-  - sosis
-  - salon
-  - skin
-  - care
-  - cloth
-  - tech
-  - rental
-  - kamera
-  - beauty
-  - express
-  - kredit
-  - collection
-  - impor
-  - preloved
-  - follow
-  - follower
-  - gain
-  - .id
-  - _id
-  - bags
-unfollow_whitelist: 
-  - instagram
-  - facebook
-  - twitter
+unfollow_everyone: false
 ```
 
 If you need to use your own configuration file, please refer to the original [instabot.py](https://github.com/instabot-py/instabot.py) page for the complete documentation on how to create this configuration file. What we need to do next is to put the config inside a folder i.e. `config/instabot.config.yml` so that you can bind the `config` folder as volume to `/app/config`. 
